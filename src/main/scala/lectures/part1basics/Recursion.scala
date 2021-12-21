@@ -43,7 +43,6 @@ object Recursion extends App {
     3.- Fibonaci function, tail recursive
   */
 
-  // 1
   def concatenateString(text: String, n: Int): String = {
     @tailrec
     def concatHelper(text: String, n: Int, accumulator: String): String = {
@@ -65,4 +64,15 @@ object Recursion extends App {
   }
   println(isPrime(2003))
   println(isPrime(629))
+
+  def fibonacci(n: Int): Int = {
+    def fibonacciTailRec(i: Int, last: Int, nextToLast: Int): Int =
+      if (i >= n) last
+      else fibonacciTailRec(i + 1, last + nextToLast, last)
+
+    if (n <= 2) 1
+    else fibonacciTailRec(2, 1, 1)
+  }
+
+  println(fibonacci(6))
 }
